@@ -1,30 +1,57 @@
 # Task1
 
-For installation, 
+# ROS2 Turtlesim Distance Publisher
 
-If you are using ROS2 Foxy:
-https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html
+## Installation
 
-If you are using ROS2 Humble:
-https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html
+Follow the appropriate installation guide based on your ROS2 version:
 
-If you are using ROS2 Jazzy:
-https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html
+- **ROS2 Foxy:** [Installation Guide](https://docs.ros.org/en/foxy/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html)
+- **ROS2 Humble:** [Installation Guide](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html)
+- **ROS2 Jazzy:** [Installation Guide](https://docs.ros.org/en/jazzy/Tutorials/Beginner-CLI-Tools/Introducing-Turtlesim/Introducing-Turtlesim.html)
 
-When you launch Turtlesim, using the following command
+## Running Turtlesim
 
-```ros2 run turtlesim turtlesim_node```
+Launch the Turtlesim node:
 
-When you run ```ros2 topic list``` while the robot simulation is running, you see an output similar to the following:
+```bash
+ros2 run turtlesim turtlesim_node
+```
 
-<img width="470" alt="Screenshot 2025-02-27 at 7 21 01 PM" src="https://github.com/user-attachments/assets/149136bf-62ae-4da2-8236-1d66dd9f36a5" />
+List available topics:
 
-Here the topic ```/turtle1/pose``` publishes the odometry of the turtle (i.e. the position, and linear and angular velocities).
+```bash
+ros2 topic list
+```
 
-Try running the following to see what is being published to this topic
+Expected output includes:
 
-```rostopic echo /turtle1/pose```
+```
+/turtle1/cmd_vel
+/turtle1/color_sensor
+/turtle1/pose
+/parameter_events
+/rosout
+```
 
-Your task is to create a subscriber that takes the position (x, y) of the robot from this topic. You then have to use these values to calculate the distance of the robot from the origin. Then, using a publisher, publish that value to a new topic.
+The topic `/turtle1/pose` publishes the position `(x, y)`, linear velocity, and angular velocity of the turtle.
 
-You need to upload the Python file(s) here as your submission along with the screenshot with the topic being displayed on the terminal.
+To view the published messages:
+
+```bash
+ros2 topic echo /turtle1/pose
+```
+
+## Task: Distance Calculation and Publishing
+
+Create a ROS2 subscriber that:
+1. Subscribes to `/turtle1/pose`.
+2. Extracts the `(x, y)` position.
+3. Computes the distance from the origin `(0,0)`.
+4. Publishes the computed distance to a new topic `/turtle1/distance_from_origin`.
+
+## Submission Requirements
+
+- Upload the Python file(s) implementing the subscriber and publisher.
+- Provide a screenshot displaying the topic output in the terminal.
+
