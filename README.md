@@ -23,7 +23,7 @@ Here the topic ```/turtle1/pose``` publishes the odometry of the turtle (i.e. th
 
 Try running the following to see what is being published to this topic
 
-```rostopic echo /robot_base_velocity_controller/odom```
+```rostopic echo /turtle1/pose```
 
 Your task is to create a subscriber that takes the position (x, y) of the robot from this topic. You then have to use these values to calculate the distance of the robot from the origin. Then, using a publisher, publish that value to a new topic.
 
