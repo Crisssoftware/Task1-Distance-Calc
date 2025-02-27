@@ -1,7 +1,5 @@
 # Task1
 
-# ROS2 Turtlesim Distance Publisher
-
 ## Installation
 
 Follow the appropriate installation guide based on your ROS2 version:
